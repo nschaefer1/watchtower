@@ -60,7 +60,7 @@ class APIResponse:
         }
 
 import sys
-from .client_connector import ClientConnection
+from nrs_toolkit.telemetry import ClientConnection
 from pathlib import Path
 
 class API:

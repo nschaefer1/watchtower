@@ -38,7 +38,7 @@ class MainApp:
         )
 
 if __name__ == '__main__':
-    from nrs_toolkit.logging import AdvancedLogger
+    from nrs_toolkit.telemetry import AdvancedLogger
     AdvancedLogger(dev=True)
 
     js_api = API(None)

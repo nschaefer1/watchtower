@@ -4,7 +4,7 @@ Test daemon — emits realistic-looking log messages at random intervals.
 Usage:
     python log_daemon.py <port>
 """
-from nrs_toolkit.logging import AdvancedLogger
+from nrs_toolkit.telemetry import AdvancedLogger
 
 import logging
 import random
