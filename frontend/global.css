@@ -1,6 +1,12 @@
+/* =====================================================
+   GLOBAL.CSS
+   - Theme variables (dark default, light override)
+   - Base html/body styling
+   - Global scrollbar styling
+   ===================================================== */
+
+/* --- DARK THEME (default) --- */
 :root {
-    /* === CYBERPUNK DARK === */
-    
     /* Backgrounds — warm neutral, no blue cast */
     --bg-primary: #121212;
     --bg-secondary: #1c1c1c;
@@ -31,18 +37,17 @@
     /* On-accent text */
     --text-on-accent: #1a0f05;           /* dark text on orange */
     --text-on-danger: #ffffff;           /* white on crimson */
-    --text-on-ghost: #a8a8a8;            /* muted, brightens on hover */
+    --text-on-ghost: #a8a8a8;
     --text-on-ghost-hover: #f5f5f5;
     --text-on-disabled: #6e6e6e;
     
-    /* Glow */
+    /* Glow effects */
     --glow-primary: 0 0 12px rgba(249, 115, 22, 0.4);
     --glow-danger: 0 0 16px rgba(220, 38, 38, 0.5);
 }
 
+/* --- LIGHT THEME (active when <html class="light">) --- */
 :root.light {
-    /* === CORPORATE LIGHT === */
-    
     --bg-primary: #ffffff;
     --bg-secondary: #f5f6f8;
     --bg-tertiary: #eaecef;
@@ -75,6 +80,7 @@
     --glow-danger: none;
 }
 
+/* --- BASE PAGE STYLES --- */
 html, body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
@@ -88,6 +94,7 @@ body {
     padding: 10px;
 }
 
+/* --- SCROLLBARS (global, applies to anything scrollable) --- */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;

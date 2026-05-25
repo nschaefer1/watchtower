@@ -1,6 +1,11 @@
+/* =====================================================
+   FONT.CSS
+   - Typography-specific tweaks
+   - Base font lives in global.css (on html/body)
+   ===================================================== */
 
 h1 {
-    color: var(--text-primary)
+    color: var(--text-primary);
 }
 
 .card-text {

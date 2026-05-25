@@ -1,6 +1,12 @@
-/*
- BASIC BUTTONS
-*/
+/* =====================================================
+   BUTTONS.CSS
+   - All .btn variants (primary, danger, ghost, disabled)
+   - Clickable icons (header SVGs, card action buttons)
+   ===================================================== */
+
+/* =====================================================
+   BASE BUTTON
+   ===================================================== */
 
 .btn {
     display: flex;
@@ -16,10 +22,16 @@
     justify-content: center;
     flex-grow: 1;
 }
+
 .btn:hover {
     background-color: var(--color-primary-hover);
 }
 
+/* =====================================================
+   BUTTON VARIANTS
+   ===================================================== */
+
+/* Destructive action (delete, kill) */
 .btn.danger {
     display: flex;
     padding: 8px 16px;
@@ -32,10 +44,25 @@
     font-weight: 500;
     justify-content: center;
 }
+
 .btn.danger:hover {
     background-color: var(--color-danger-hover);
 }
 
+/* Secondary action (popup cancel buttons) */
+.btn.ghost {
+    background-color: var(--color-ghost);
+    color: var(--text-on-ghost);
+    border: 1px solid var(--color-ghost-border);
+    font-weight: 500;
+}
+
+.btn.ghost:hover {
+    background-color: var(--color-ghost-hover);
+    color: var(--text-on-ghost-hover);
+}
+
+/* Disabled state (any button can have it) */
 .btn.disabled {
     background-color: var(--color-disabled);
     cursor: not-allowed;
@@ -43,53 +70,66 @@
     pointer-events: none;
 }
 
-.btn.ghost {
-    background-color: var(--color-ghost);
-    color: var(--text-on-ghost);
-    border: 1px solid var(--color-ghost-border);
-    font-weight: 500;
-}
-.btn.ghost:hover {
-    background-color: var(--color-ghost-hover);
-    color: var(--text-on-ghost-hover);
-}
-
-/*
- SPECIFIC BUTTON SCENARIOS
-*/
+/* =====================================================
+   SPECIFIC BUTTON OVERRIDES
+   ===================================================== */
 
 #kill-btn {
     flex-grow: 0;
     width: 150px;
 }
+
 #refresh-btn {
     flex-grow: 0;
     width: 50px;
 }
+
+/* =====================================================
+   CLICKABLE ICONS (header SVGs — cycle, theme toggle)
+   ===================================================== */
+
+.clickable-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-primary);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s, transform 0.15s;
+}
+
+.clickable-icon:hover {
+    color: var(--color-primary);
+}
+
+.clickable-icon.disabled {
+    color: var(--color-disabled);
+    pointer-events: none;
+}
+
+/* Cycle (refresh-all) button — rotates on hover, spins while active */
 #cycle-btn:hover {
     transform: rotate(90deg);
 }
+
 #cycle-btn.spinning {
     animation: spin 0.6s linear infinite;
 }
 
-/*
- RECONNECT SPINNERS ON CARDS IN INDEX.HTML
-*/
+/* =====================================================
+   CARD ACTION BUTTONS (positioned absolutely on cards)
+   ===================================================== */
 
+/* Reconnect button — only shows on disconnected/error cards */
 .card-reconnect {
     position: absolute;
     top: 8px;
-    right: 36px;
-
+    right: 36px;              /* sits to the left of card-delete */
     width: 24px;
     height: 24px;
     border-radius: 50%;
-
-    display: none;
+    display: none;            /* hidden by default — show rules below */
     align-items: center;
     justify-content: center;
-
     color: var(--text-secondary);
     cursor: pointer;
     user-select: none;
@@ -107,26 +147,22 @@
     pointer-events: none;
 }
 
+/* Only show reconnect when port is in a recoverable bad state */
 .card.status-disconnected .card-reconnect,
 .card.status-error .card-reconnect {
     display: flex;
 }
 
-/*
- DELETE BUTTONS ON INDEX.HTML
-*/
-
+/* Delete button — always visible on every card */
 .card-delete {
     position: absolute;
     top: 8px;
     right: 8px;
     width: 24px;
     height: 24px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     color: var(--text-secondary);
     cursor: pointer;
     user-select: none;
@@ -141,36 +177,4 @@
 .card-delete.disabled {
     color: var(--color-disabled);
     pointer-events: none;
-}
-
-/*
- BASIC CLICKABLE ICONS
-*/
-
-.clickable-icon {
-    width: 24px;
-    height: 24px;
-    color: var(--text-primary);
-
-    cursor: pointer;
-    user-select: none;
-    
-    transition: color 0.15s, transform 0.15s;
-}
-
-.clickable-icon.disabled {
-    color: var(--color-disabled);
-    pointer-events: none;
-}
-
-.clickable-icon:hover {
-    color: var(--color-primary);
-}
-
-/*
- ANIMATIONS
-*/
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
 }

@@ -1,0 +1,16 @@
+/* =====================================================
+   ANIMATIONS.CSS
+   - All @keyframes definitions in one place
+   - Referenced from various components/buttons
+   ===================================================== */
+
+/* Smooth rotation — used by cycle-btn spinning, reconnect-btn spinning */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Fade in/out pulse — used by error status lights */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.2; }
+}

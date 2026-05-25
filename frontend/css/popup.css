@@ -1,5 +1,15 @@
+/* =====================================================
+   POPUP.CSS
+   - Floating popup dialogs (add port, confirm actions)
+   - Form fields inside popups
+   ===================================================== */
+
+/* =====================================================
+   POPUP CONTAINER
+   ===================================================== */
+
 .popup {
-    position: fixed;
+    position: fixed;              /* float over the page, doesn't affect layout */
     bottom: 20px;
     right: 20px;
     width: 320px;
@@ -7,13 +17,23 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    z-index: 1000;
-    display:none;
+    z-index: 1000;                /* sit above main content */
+    display: none;                /* hidden until .show is added */
 }
 
 .popup.show {
     display: block;
 }
+
+/* Buttons inside popups stretch equally instead of fixed-width */
+.popup .btn {
+    flex: 1;
+    min-width: 0;
+}
+
+/* =====================================================
+   POPUP HEADER (title + close button)
+   ===================================================== */
 
 .popup-header {
     display: flex;
@@ -34,12 +54,20 @@
     color: var(--text-primary);
 }
 
+/* =====================================================
+   POPUP BODY (form fields, content)
+   ===================================================== */
+
 .popup-body {
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
+
+/* =====================================================
+   FORM FIELDS (label + input pairs)
+   ===================================================== */
 
 .form-field {
     display: flex;
@@ -62,7 +90,7 @@
     border-radius: 8px;
     font-size: 14px;
     font-family: inherit;
-    outline: none;
+    outline: none;            /* replaced with custom focus ring below */
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
@@ -76,6 +104,7 @@
     opacity: 0.5;
 }
 
+/* Error message slot — reserved height prevents popup from jumping */
 .form-error {
     color: var(--color-danger);
     font-size: 13px;
