@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class=" ">
+<head>
+
+    
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/popup.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            
+            <h1>All Processes</h1>
+            <div class="spacer"></div>
+            <div class="btn danger disabled" id="kill-btn">Kill Process</div>
+            
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="clickable-icon" id="cycle-btn">
+                <title>Reconnect All</title>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="clickable-icon" id="clear-console-btn">
+                <title>Clear Console</title>
+                <path d="m14.622 17.897-10.68-2.913"/>
+                <path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z"/>
+                <path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15"/>
+            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="clickable-icon" id="light-dark-btn">
+                <title>Theme</title>
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            
+        </div>
+
+        <div class="side-by-side-content">
+            
+            <div class="content">
+                <div class="vert-card-list">
+                </div>
+                <div class="footer">
+                    <div class="btn" id="sort-by-btn">Sort By: Port</div>
+                    <div class="btn" id="add-port-btn">Add Port</div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="console" id="main-console"> 
+                </div>
+
+                <div class="footer">
+                    <div class="chart-box"><canvas id="chart1"></canvas></div>
+                    <div class="chart-box"><canvas id="chart2"></canvas></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="popup" id="port-popup">
+        <div class="popup-header">
+            <span>Popup Title</span>
+            <span class="popup-close" id="port-popup-close" onclick="document.getElementById('port-popup').classList.remove('show')">X</span>
+        </div>
+        <div class="popup-body">
+            <div class="form-field">
+                <label for="process-name-input">Process Name</label>
+                <input type="text" id="process-name-input" placeholder="Main API">
+            </div>
+            <div class="form-field">
+                <label for="port-input">Port</label>
+                <input type="text" id="port-input" placeholder="8080">
+            </div>
+            <div class="form-error" id="port-popup-error"></div>
+            <div class="btn" id="port-popup-submit-btn">Add</div>
+        </div>
+    </div>
+
+    <div class="popup" id="confirm-popup">
+        <div class="popup-header">
+            <span id="confirm-popup-title">Are you sure?</span>
+        </div>
+        <div class="popup-body">
+            <div id="confirm-popup-message">Are you sure you want to proceed?</div>
+            <div style="display: flex; gap: 10px;">
+                <div class="btn ghost" id="confirm-popup-cancel">Cancel</div>
+                <div class="btn danger" id="confirm-popup-ok">Confirm</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+    <script src="../global.js"></script>
+    <script src="../router.js"></script>
+    <script src="../js/chart.umd.js"></script>
+    <script src="../js/index.js"></script>
+</html>

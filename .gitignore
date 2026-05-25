@@ -1,0 +1,14 @@
+
+.venv/
+__pycache__/
+logs/
+
+secrets/
+.env
+
+build/
+dist/
+*.spec
+
+webview_data/
+ports.json

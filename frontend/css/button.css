@@ -1,0 +1,176 @@
+/*
+ BASIC BUTTONS
+*/
+
+.btn {
+    display: flex;
+    padding: 8px 16px;
+    background-color: var(--color-primary);
+    color: var(--text-on-accent);
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s;
+    font-weight: 700;
+    font-size: 18px;
+    justify-content: center;
+    flex-grow: 1;
+}
+.btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn.danger {
+    display: flex;
+    padding: 8px 16px;
+    background-color: var(--color-danger);
+    color: var(--text-on-danger);
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s;
+    font-weight: 500;
+    justify-content: center;
+}
+.btn.danger:hover {
+    background-color: var(--color-danger-hover);
+}
+
+.btn.disabled {
+    background-color: var(--color-disabled);
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.btn.ghost {
+    background-color: var(--color-ghost);
+    color: var(--text-on-ghost);
+    border: 1px solid var(--color-ghost-border);
+    font-weight: 500;
+}
+.btn.ghost:hover {
+    background-color: var(--color-ghost-hover);
+    color: var(--text-on-ghost-hover);
+}
+
+/*
+ SPECIFIC BUTTON SCENARIOS
+*/
+
+#kill-btn {
+    flex-grow: 0;
+    width: 150px;
+}
+#refresh-btn {
+    flex-grow: 0;
+    width: 50px;
+}
+#cycle-btn:hover {
+    transform: rotate(90deg);
+}
+#cycle-btn.spinning {
+    animation: spin 0.6s linear infinite;
+}
+
+/*
+ RECONNECT SPINNERS ON CARDS IN INDEX.HTML
+*/
+
+.card-reconnect {
+    position: absolute;
+    top: 8px;
+    right: 36px;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    transition: transform 0.15s;
+}
+
+.card-reconnect:hover {
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+
+.card-reconnect.spinning {
+    animation: spin 0.6s linear infinite;
+    pointer-events: none;
+}
+
+.card.status-disconnected .card-reconnect,
+.card.status-error .card-reconnect {
+    display: flex;
+}
+
+/*
+ DELETE BUTTONS ON INDEX.HTML
+*/
+
+.card-delete {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s, transform 0.15s;
+}
+
+.card-delete:hover {
+    color: var(--color-danger);
+    transform: scale(1.15);
+}
+
+.card-delete.disabled {
+    color: var(--color-disabled);
+    pointer-events: none;
+}
+
+/*
+ BASIC CLICKABLE ICONS
+*/
+
+.clickable-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-primary);
+
+    cursor: pointer;
+    user-select: none;
+    
+    transition: color 0.15s, transform 0.15s;
+}
+
+.clickable-icon.disabled {
+    color: var(--color-disabled);
+    pointer-events: none;
+}
+
+.clickable-icon:hover {
+    color: var(--color-primary);
+}
+
+/*
+ ANIMATIONS
+*/
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

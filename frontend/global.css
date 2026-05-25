@@ -1,0 +1,107 @@
+:root {
+    /* === CYBERPUNK DARK === */
+    
+    /* Backgrounds — warm neutral, no blue cast */
+    --bg-primary: #121212;
+    --bg-secondary: #1c1c1c;
+    --bg-tertiary: #262626;
+    
+    /* Text */
+    --text-primary: #f5f5f5;
+    --text-secondary: #a8a8a8;
+    --text-accent: #ff4b4b;
+    
+    /* Borders */
+    --border: #2e2e2e;
+    --border-glow: #ff4b4b;
+    
+    /* Accents */
+    --color-primary: #f97316;            /* orange — regular action */
+    --color-primary-hover: #fb923c;
+    --color-danger: #dc2626;             /* crimson — destructive */
+    --color-danger-hover: #ef4444;
+    --color-success: #22c55e;
+    --color-disabled: #2e2e2e;
+    
+    /* Ghost button — transparent, subtle */
+    --color-ghost: transparent;
+    --color-ghost-hover: rgba(245, 245, 245, 0.06);
+    --color-ghost-border: #444444;
+    
+    /* On-accent text */
+    --text-on-accent: #1a0f05;           /* dark text on orange */
+    --text-on-danger: #ffffff;           /* white on crimson */
+    --text-on-ghost: #a8a8a8;            /* muted, brightens on hover */
+    --text-on-ghost-hover: #f5f5f5;
+    --text-on-disabled: #6e6e6e;
+    
+    /* Glow */
+    --glow-primary: 0 0 12px rgba(249, 115, 22, 0.4);
+    --glow-danger: 0 0 16px rgba(220, 38, 38, 0.5);
+}
+
+:root.light {
+    /* === CORPORATE LIGHT === */
+    
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f6f8;
+    --bg-tertiary: #eaecef;
+    
+    --text-primary: #1a1f36;
+    --text-secondary: #5a6478;
+    --text-accent: #0052cc;
+    
+    --border: #d8dce3;
+    --border-glow: #0052cc;
+    
+    --color-primary: #0052cc;
+    --color-primary-hover: #003d99;
+    --color-danger: #c0392b;
+    --color-danger-hover: #a93226;
+    --color-success: #2e7d4f;
+    --color-disabled: #eaecef;
+    
+    --color-ghost: transparent;
+    --color-ghost-hover: rgba(0, 0, 0, 0.04);
+    --color-ghost-border: #d8dce3;
+    
+    --text-on-accent: #ffffff;
+    --text-on-danger: #ffffff;
+    --text-on-ghost: #5a6478;
+    --text-on-ghost-hover: #1a1f36;
+    --text-on-disabled: #8b94a8;
+    
+    --glow-primary: none;
+    --glow-danger: none;
+}
+
+html, body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    padding: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
