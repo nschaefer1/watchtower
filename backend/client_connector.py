@@ -9,28 +9,57 @@ import psutil
 from collections import deque
 
 class ClientConnection:
+    """
+    Manage a socket connection to an AdvancedLogger listener.
 
-    def __init__(self, port:int):
+    This class connects to a TCP listener opened by `AdvancedLogger`, starts a
+    background reader thread, and stores incoming newline-delimited JSON
+    messages. Each message must be a complete JSON object terminated by a
+    newline character.
+
+    Messages are expected to follow the schema emitted by `AdvancedLogger` and
+    its `BroadcastHandler`.
+
+    Expected message types are:
+        - "conn": listener handshake message
+        - "log": appended to `logs`
+        - "stats": appended to `stats` and stored as `latest_stats`
+
+    Incoming log and stats messages are retained in bounded queues so the client
+    can expose recent activity without growing memory indefinitely.
+    """
+
+    def __init__(
+            self,
+            port:int,
+            *,
+            host: str = "127.0.0.1",
+            log_limit: int = 500,
+            stats_limit: int = 360,
+            connect_timeout: float = 2.0,
+            recv_size: int = 4096
+    ):
         
-        # Conneciton objects (port, socket, thread, etc.)
+        # Connection resources
+        self.host = host
         self.port = port
         self._sock = None
         self._thread = None
         self._stop = threading.Event()
         self.error = None
         self.pid = None
+        self.connect_timeout = connect_timeout
+        self.recv_size = recv_size
 
-        # Logs
-        self.logs = deque(maxlen=500)       # the last 500 lines
-        
-        # Statisitics
-        self.stats = deque(maxlen=360)      # historical stats for the last 30min
-        self.latest_stats = None            # most recent stats dictionary, or None if never received
+        # Retained message history
+        self.logs = deque(maxlen=log_limit)
+        self.stats = deque(maxlen=stats_limit)
+        self.latest_stats = None
 
-        # Status
+        # Connection state
         self.status = "disconnected"
 
-    def connect(self, host="127.0.0.1") -> bool:
+    def connect(self) -> bool:
         """
         Open socket and start reader thread.
         Returns True on success.
@@ -42,8 +71,8 @@ class ClientConnection:
 
         try:
             self._sock = socket.socket()
-            self._sock.settimeout(2.0)      # 2 seconds
-            self._sock.connect((host, self.port))
+            self._sock.settimeout(self.connect_timeout)      # 2 seconds
+            self._sock.connect((self.host, self.port))
             self._sock.settimeout(None)     # blocking for reads
 
         except (OSError, socket.timeout) as e:
