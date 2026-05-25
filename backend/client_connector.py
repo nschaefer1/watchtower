@@ -37,7 +37,7 @@ class ClientConnection:
         """
         self.logs.clear()
         self.stats.clear()
-        self.latest_stat = None
+        self.latest_stats = None
         self.pid = None
 
         try:
